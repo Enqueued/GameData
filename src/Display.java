@@ -1,4 +1,4 @@
-import javax.swing.*;
+import javax.swing.*;asd
 import java.awt.*;
 
 /**
@@ -6,7 +6,7 @@ import java.awt.*;
  */
 
 public class Display {
-    private JFrame frame;
+    private JFrame frame;as
     private Canvas canvas;
     private Dimension dimi;
     private String title;

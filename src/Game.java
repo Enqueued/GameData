@@ -7,7 +7,7 @@ public class Game {
     public int width, height;
     public Game(String t, int w, int h){
         this.width=w;
-        this.height=h;
+        this.height=h;asd
         dis=new Display(t,w,h);
     }
 }
