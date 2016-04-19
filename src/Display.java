@@ -1,4 +1,4 @@
-import javax.swing.*;asd
+import javax.swing.*;
 import java.awt.*;
 
 /**
