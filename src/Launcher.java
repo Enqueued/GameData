@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class Launcher{
     public static void main(String[] args){
-        Game game = new Game("Game:\nGame!!!", 300, 300);
+        Game game = new Game("Game:\nGame!!!", 600, 600);
         game.start();
     }
 }

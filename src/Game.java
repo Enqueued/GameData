@@ -1,5 +1,8 @@
+import graphic_launch.*;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by Parzival on 4/19/2016.
@@ -14,6 +17,7 @@ public class Game implements Runnable{
     private BufferStrategy buff; //used to prevent screen flashing
     private Graphics g;
 
+    private BufferedImage map;
 
     public Game(String t, int w, int h){
         this.width=w;
@@ -23,6 +27,7 @@ public class Game implements Runnable{
 
     public void init(){
         dis=new Display(title,width,height);
+        map= ImgLoad.loadImage("/textures/test.png");
     }
 
     /**
@@ -37,7 +42,7 @@ public class Game implements Runnable{
         g=buff.getDrawGraphics();
         g.clearRect(0,0,width,height); //used to clean whatever is on it
 
-
+        g.drawImage(map, 0, 0, null);
 
         //below use to show the drawn obj and clean the waste
         buff.show();
