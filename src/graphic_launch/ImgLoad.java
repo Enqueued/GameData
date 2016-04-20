@@ -1,4 +1,4 @@
-package graphic_launch;
+package graphic_launch; //package for graphics
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

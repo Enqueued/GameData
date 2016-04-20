@@ -1,4 +1,4 @@
-import graphic_launch.*;
+import graphic_launch.*; //graphics package for image loading
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
