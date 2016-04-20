@@ -1,5 +1,6 @@
 import graphic_launch.*; //graphics package for image loading
 import states.GameState;
+import states.InvState;
 import states.State;
 import states.StateManager;
 
@@ -22,6 +23,7 @@ public class Game implements Runnable{
     private BufferStrategy buff; //used to prevent screen flashing
     private Graphics g;
     private State gState;
+    private State invS;
 
     //private BufferedImage map;
 
@@ -36,6 +38,7 @@ public class Game implements Runnable{
         Assets.init();
 
         gState=new GameState();
+        invS = new GameState();
         StateManager.setState(gState);
     }
 
