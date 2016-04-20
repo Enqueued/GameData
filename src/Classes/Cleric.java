@@ -1,6 +1,6 @@
 package Classes;
 
-import Spell_Bookz.SpellCaster;
+import combat_usage.SpellCaster;
 import combat_usage.rng;
 
 /**
@@ -18,7 +18,7 @@ public class Cleric extends SpellCaster implements Base_Stat {
     }
 
     @Override
-    public int get_dmg() {
+    public int get_dmg(String weapon) {
         return 0;
     }
 

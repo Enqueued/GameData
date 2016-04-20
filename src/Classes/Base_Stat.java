@@ -6,7 +6,7 @@ package Classes;
 public interface Base_Stat {
     void set_stat();
 
-    int get_dmg();
+    int get_dmg(String weapon);
 
     int get_dodge();
 

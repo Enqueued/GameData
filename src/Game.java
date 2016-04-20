@@ -16,7 +16,7 @@ public class Game implements Runnable{
     private Thread thread;
     private BufferStrategy buff; //used to prevent screen flashing
     private Graphics g;
-
+    int x=0;
     //private BufferedImage map;
 
     public Game(String t, int w, int h){
@@ -43,21 +43,33 @@ public class Game implements Runnable{
         g.clearRect(0,0,width,height); //used to clean whatever is on it
 
        //g.drawImage(map, 0, 0, null);
-        g.drawImage(Assets.player, 10, 10, null);
+        g.drawImage(Assets.player, 0, 10, null);
         //below use to show the drawn obj and clean the waste
         buff.show();
         g.dispose();
     }
 
     private void tick(){
-
+        x+=1;
     }
 
     public void run(){
         init();
+        int fps=20;
+        double tpt=1000000000/fps; //100000000 nanosecs per 1 sec
+        double delta=0;
+        long now;
+        long last=System.nanoTime();
+
         while(running){
-            tick();
-            render();
+            /*now = System.nanoTime();
+            delta+=(now-last)/tpt;
+            last = now;
+            if(delta>=1) {*/
+                tick();
+                render();
+                //delta--;
+           // }
         }
         stop();
     }

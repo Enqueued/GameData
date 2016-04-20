@@ -16,7 +16,7 @@ public class Assets {
     //needs to be public because it will be sent to other things
     public static BufferedImage player, wall, floor, enemy;
     public static void init(){
-        Spritez sheet = new Spritez(ImgLoad.loadImage("/path/to/sheet.png"));
+        Spritez sheet = new Spritez(ImgLoad.loadImage("/textures/badsheet.png"));
         //now we need to crop and set each asset;
         //example
         player = sheet.crop(0, 0, bw, bh);

@@ -1,14 +1,12 @@
 package Classes;
 import combat_usage.*;
-import Spell_Bookz.SpellCaster;
-
-import java.util.Random;
 
 /**
  * Created by Parzival on 4/19/2016.
  */
 
 public class Mage extends SpellCaster implements Base_Stat{
+    public SpellCaster me = new SpellCaster();
     @Override
     public void set_stat() {
         strength = rng.rng_maker(16, 6);
@@ -20,7 +18,18 @@ public class Mage extends SpellCaster implements Base_Stat{
     }
 
     @Override
-    public int get_dmg() {
+    public int get_dmg(String weapon) {
+        boolean sp;
+        int i;
+        for(i = 0; i < me.book.getNumSpells(); i++) {
+            if (weapon == book.getSpell(i).getType()){
+                sp = true;
+                break;
+            }
+        }
+        /*if(sp = true){
+
+        }*/
         return 0;
     }
 
