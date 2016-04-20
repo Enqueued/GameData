@@ -1,4 +1,7 @@
 import graphic_launch.*; //graphics package for image loading
+import states.GameState;
+import states.State;
+import states.StateManager;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -9,14 +12,17 @@ import java.awt.image.BufferedImage;
  * going to be the main code for the game, where everything gets made
  */
 public class Game implements Runnable{
-    private Display dis;
+
     public int width, height;
     public String title;
+
+    private Display dis;
     private boolean running;
     private Thread thread;
     private BufferStrategy buff; //used to prevent screen flashing
     private Graphics g;
-    int x=0;
+    private State gState;
+
     //private BufferedImage map;
 
     public Game(String t, int w, int h){
@@ -27,7 +33,10 @@ public class Game implements Runnable{
 
     public void init(){
         dis=new Display(title,width,height);
-        //map= ImgLoad.loadImage("/textures/test.png");
+        Assets.init();
+
+        gState=new GameState();
+        StateManager.setState(gState);
     }
 
     /**
@@ -43,6 +52,8 @@ public class Game implements Runnable{
         g.clearRect(0,0,width,height); //used to clean whatever is on it
 
        //g.drawImage(map, 0, 0, null);
+        if(StateManager.getState()!=null)
+            StateManager.getState().render(g);
         g.drawImage(Assets.player, 0, 10, null);
         //below use to show the drawn obj and clean the waste
         buff.show();
@@ -50,7 +61,9 @@ public class Game implements Runnable{
     }
 
     private void tick(){
-        x+=1;
+        //x+=1;
+        if(StateManager.getState()!=null)
+            StateManager.getState().tick();
     }
 
     public void run(){
@@ -62,14 +75,14 @@ public class Game implements Runnable{
         long last=System.nanoTime();
 
         while(running){
-            /*now = System.nanoTime();
+            now = System.nanoTime();
             delta+=(now-last)/tpt;
             last = now;
-            if(delta>=1) {*/
+            if(delta>=1) {
                 tick();
                 render();
-                //delta--;
-           // }
+                delta--;
+            }
         }
         stop();
     }
