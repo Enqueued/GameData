@@ -1,6 +1,7 @@
 package Entities.Actors;
 
 import Entities.Entity;
+import Tiles.Tile;
 import main_pack.Game;
 import main_pack.Handler;
 
@@ -22,8 +23,43 @@ public abstract class Actor extends Entity {
         speed=DEFAULT_SPEED;
     }
     public void move(){
-        x+=xMove;
-        y+=yMove;
+        moveX();
+        moveY();
+    }
+    public void moveX(){
+        if(xMove>0){
+            int tx = (int)(x+xMove+bound.x+bound.width)/Tile.TILEWIDE;
+            if(!collision(tx, (int)(y+bound.y)/Tile.TILEHIGH) &&
+                    !collision(tx,(int)(y+bound.y +bound.height)/Tile.TILEHIGH)){
+                x+=xMove;
+            }
+        }else if(xMove<0){
+            int tx = (int)(x+xMove+bound.x)/Tile.TILEWIDE;
+            if(!collision(tx, (int)(y+bound.y)/Tile.TILEHIGH) &&
+                    !collision(tx,(int)(y+bound.y +bound.height)/Tile.TILEHIGH)){
+                x+=xMove;
+            }
+        }
+
+    }
+    public void moveY(){
+        if(yMove<0){
+            int ty = (int)(y+yMove+bound.y)/Tile.TILEHIGH;
+            if(!collision((int)(x+bound.x)/Tile.TILEWIDE, ty) &&
+                    !collision((int)(x+bound.x +bound.width)/Tile.TILEWIDE, ty)){
+                y+=yMove;
+            }
+        }else if(yMove>0){
+            int ty = (int)(y+yMove+bound.y+bound.height)/Tile.TILEHIGH;
+            if(!collision((int)(x+bound.x)/Tile.TILEWIDE, ty) &&
+                    !collision((int)(x+bound.x +bound.width)/Tile.TILEWIDE, ty)){
+                y+=yMove;
+            }
+        }
+    }
+
+    protected boolean collision(int x, int y){
+        return hands.getWorld().getTile(x,y).isSolid();
     }
     //Getters
     public int getHealth(){

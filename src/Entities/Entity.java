@@ -12,6 +12,7 @@ public abstract class Entity {
     protected Handler hands;
     protected float x, y; //set as floats to make calculations easier
     protected int width, height;
+    protected Rectangle bound;
 
     public Entity(Handler hands, float x, float y, int width, int height){
         this.hands=hands;
@@ -19,6 +20,7 @@ public abstract class Entity {
         this.y=y;
         this.width=width;
         this.height=height;
+        bound = new Rectangle(0,0, width, height);
     }
 
     public abstract void tick();

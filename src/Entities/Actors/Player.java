@@ -12,6 +12,10 @@ import java.awt.*;
 public class Player extends Actor {
     public Player(Handler hands, float x, float y) {
         super(hands, x, y, Actor.DEFAULT_ACT_WIDE,Actor.DEFAULT_ACT_HIGH);
+        bound.x=8;
+        bound.y=8;
+        bound.width=16;
+        bound.height=24;
     }
 
     @Override
@@ -41,5 +45,8 @@ public class Player extends Actor {
     @Override
     public void render(Graphics g){
         g.drawImage(Assets.player,(int)(x-hands.getCam().getxOff()),(int)(y-hands.getCam().getyOff()), width, height, null);
+        g.setColor(Color.black);
+        g.fillRect((int)(x+bound.x-hands.getCam().getxOff()),
+                (int)(y+bound.y-hands.getCam().getyOff()), bound.width, bound.height);
     }
 }
