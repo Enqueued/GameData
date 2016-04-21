@@ -1,3 +1,5 @@
+package main_pack;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -34,6 +36,7 @@ public class Display {
         canvas.setPreferredSize(dimi);
         canvas.setMinimumSize(dimi);
         canvas.setMaximumSize(dimi);
+        canvas.setFocusable(false);
         frame.add(canvas);
         frame.pack();
     }
@@ -41,5 +44,7 @@ public class Display {
     public Canvas getCanvas(){
         return canvas;
     }
-
+    public JFrame getFrame(){
+        return frame;
+    }
 }

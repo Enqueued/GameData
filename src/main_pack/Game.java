@@ -1,12 +1,11 @@
+package main_pack;
+
 import graphic_launch.*; //graphics package for image loading
-import states.GameState;
-import states.InvState;
-import states.State;
-import states.StateManager;
+import input.KeyManager;
+import states.*;
 
 import java.awt.*;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
 
 /**
  * Created by Parzival on 4/19/2016.
@@ -24,6 +23,8 @@ public class Game implements Runnable{
     private Graphics g;
     private State gState;
     private State invS;
+    private State menuS;
+    private KeyManager keyM;
 
     //private BufferedImage map;
 
@@ -31,14 +32,17 @@ public class Game implements Runnable{
         this.width=w;
         this.height=h;
         this.title=t;
+        keyM=new KeyManager();
     }
 
     public void init(){
         dis=new Display(title,width,height);
+        dis.getFrame().addKeyListener(keyM);
         Assets.init();
 
-        gState=new GameState();
-        invS = new GameState();
+        gState=new GameState(this);
+        invS = new InvState(this);
+        menuS=new MenuState(this);
         StateManager.setState(gState);
     }
 
