@@ -11,13 +11,13 @@ import java.awt.image.BufferedImage;
  */
 public class Assets {
     //these are just example sizes for base width & base height
-    private static final int bw=32, bh=32;
+    private static final int bw=17, bh=17;
 
     //needs to be public because it will be sent to other things
     public static BufferedImage player, wall, floor, enemy;
 
     public static void init(){
-        Spritez sheet = new Spritez(ImgLoad.loadImage("/textures/badsheet.png"));
+        Spritez sheet = new Spritez(ImgLoad.loadImage("/textures/dragonwarrior_various_sheet.png"));
         //now we need to crop and set each asset;
         //example
         player = sheet.crop(0, 0, bw, bh);

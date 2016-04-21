@@ -61,7 +61,7 @@ public class Game implements Runnable{
        //g.drawImage(map, 0, 0, null);
         if(StateManager.getState()!=null)
             StateManager.getState().render(g);
-        g.drawImage(Assets.player, 0, 10, null);
+        //g.drawImage(Assets.player, 0, 10, null);
         //below use to show the drawn obj and clean the waste
         buff.show();
         g.dispose();
@@ -69,6 +69,7 @@ public class Game implements Runnable{
 
     private void tick(){
         //x+=1;
+        keyM.tick();
         if(StateManager.getState()!=null)
             StateManager.getState().tick();
     }
@@ -92,6 +93,10 @@ public class Game implements Runnable{
             }
         }
         stop();
+    }
+
+    public KeyManager getKeyManager(){
+        return keyM;
     }
 
     public synchronized void start(){
