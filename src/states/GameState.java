@@ -5,6 +5,7 @@ import Rooms.World;
 import Tiles.Tile;
 import graphic_launch.Assets;
 import main_pack.Game;
+import main_pack.Handler;
 
 import java.awt.*;
 
@@ -14,12 +15,11 @@ import java.awt.*;
 public class GameState extends State {
     private Player player;
     private World world;
-    public GameState(Game game){
-        super(game);
-        player=new Player(game, 100, 100);
-        world = new World(game, "assets/rooms/room1.txt");
-
-       // game.getCam().move(0, 0);
+    public GameState(Handler hands){
+        super(hands);
+        world = new World(hands, "assets/rooms/room1.txt");
+        hands.setWorld(world);
+        player=new Player(hands, 100, 100);
     }
 
     @Override

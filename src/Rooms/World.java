@@ -3,6 +3,7 @@ package Rooms;
 import Tiles.Tile;
 import Utils.Utilz;
 import main_pack.Game;
+import main_pack.Handler;
 
 import java.awt.*;
 
@@ -10,27 +11,32 @@ import java.awt.*;
  * Created by Parzival on 4/20/2016.
  */
 public class World {
-    private Game game;
+    private Handler handler;
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
 
-    public World(Game game, String path){
-        this.game=game;
+    public World(Handler hands, String path){
+        this.handler = hands;
         loadWorld(path);
     }
     public void tick(){
 
     }
     public void render(Graphics g){
+        int xMin=(int)Math.max(0, handler.getCam().getxOff()/Tile.TILEWIDE);
+        int xMax=(int)Math.min(width, (handler.getCam().getxOff()+ handler.getWidth())/Tile.TILEWIDE+1);
+        int yMin=(int)Math.max(0, handler.getCam().getyOff()/Tile.TILEHIGH);
+        int yMax=(int)Math.min(height, (handler.getCam().getyOff()+ handler.getHeight())/Tile.TILEHIGH +1);
 
-        for(int y=0; y<height; y++){
-            for(int x=0; x<width; x++){
-                getTile(x, y).render(g, (int)(x*Tile.TILEWIDE - game.getCam().getxOff()),
-                        (int)(y*Tile.TILEHIGH - game.getCam().getyOff()));
+        for(int y=yMin; y<yMax; y++){
+            for(int x=xMin; x<xMax; x++){
+                getTile(x, y).render(g, (int)(x*Tile.TILEWIDE - handler.getCam().getxOff()),
+                        (int)(y*Tile.TILEHIGH - handler.getCam().getyOff()));
             }
         }
     }
+
     public Tile getTile(int x, int y){
         Tile t = Tile.tiles[tiles[x][y]];
         if(t==null)

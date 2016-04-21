@@ -26,6 +26,7 @@ public class Game implements Runnable{
     private State menuS;
     private KeyManager keyM;
     private Game_Camera cam;
+    private Handler hands;
     //private BufferedImage map;
 
     public Game(String t, int w, int h){
@@ -41,10 +42,10 @@ public class Game implements Runnable{
         Assets.init();
 
         cam = new Game_Camera(this, 0,0);
-
-        gState=new GameState(this);
-        invS = new InvState(this);
-        menuS=new MenuState(this);
+        hands=new Handler(this);
+        gState=new GameState(hands);
+        invS = new InvState(hands);
+        menuS=new MenuState(hands);
         StateManager.setState(gState);
     }
 
@@ -78,7 +79,7 @@ public class Game implements Runnable{
 
     public void run(){
         init();
-        int fps=20;
+        int fps=60;
         double tpt=1000000000/fps; //100000000 nanosecs per 1 sec
         double delta=0;
         long now;

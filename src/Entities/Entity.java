@@ -1,6 +1,7 @@
 package Entities;
 
 import main_pack.Game;
+import main_pack.Handler;
 
 import java.awt.*;
 
@@ -8,12 +9,12 @@ import java.awt.*;
  * Created by Parzival on 4/20/2016.
  */
 public abstract class Entity {
-    protected Game game;
+    protected Handler hands;
     protected float x, y; //set as floats to make calculations easier
     protected int width, height;
 
-    public Entity(Game game, float x, float y, int width, int height){
-        this.game=game;
+    public Entity(Handler hands, float x, float y, int width, int height){
+        this.hands=hands;
         this.x=x;
         this.y=y;
         this.width=width;

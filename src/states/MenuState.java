@@ -1,6 +1,7 @@
 package states;
 
 import main_pack.Game;
+import main_pack.Handler;
 
 import java.awt.*;
 
@@ -8,8 +9,8 @@ import java.awt.*;
  * Created by main on 4/20/16.
  */
 public class MenuState extends State {
-    public MenuState(Game game){
-        super(game);
+    public MenuState(Handler hands){
+        super(hands);
     }
 
     @Override
