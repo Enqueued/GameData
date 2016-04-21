@@ -14,13 +14,16 @@ public class Assets {
     private static final int bw=17, bh=17;
 
     //needs to be public because it will be sent to other things
-    public static BufferedImage player, wall, floor, enemy;
+    public static BufferedImage player, wall, floor, enemy, grass, ground, tree;
 
     public static void init(){
         Spritez sheet = new Spritez(ImgLoad.loadImage("/textures/dragonwarrior_various_sheet.png"));
         //now we need to crop and set each asset;
         //example
         player = sheet.crop(0, 0, bw, bh);
-        wall = sheet.crop(bw, 0, bw, bh);
+        grass = sheet.crop(64, 270, bw, bh);
+        wall = sheet.crop(16, 204, bw, bh);
+        tree = sheet.crop(0, 204, bw, bh);
+        ground = sheet.crop(112, 396, bw, bh);
     }
 }

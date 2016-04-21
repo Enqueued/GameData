@@ -1,6 +1,7 @@
 package states;
 
 import Entities.Actors.Player;
+import Tiles.Tile;
 import graphic_launch.Assets;
 import main_pack.Game;
 
@@ -25,5 +26,6 @@ public class GameState extends State {
     public void render(Graphics g) {
         //g.drawImage(Assets.player,0,0,null);
         player.render(g);
+        Tile.tiles[0].render(g, 0, 0);
     }
 }
