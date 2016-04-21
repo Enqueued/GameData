@@ -1,6 +1,7 @@
 package Entities.Actors;
 
 import Entities.Entity;
+import main_pack.Game;
 
 /**
  * Created by Parzival on 4/20/2016.
@@ -14,8 +15,8 @@ public abstract class Actor extends Entity {
     public static final int DEFAULT_ACT_WIDE=32;
     public static final int DEFAULT_ACT_HIGH=32;
 
-    public Actor(float x, float y, int width, int height) {
-        super(x, y, width, height);    //sends to the entity class constructor
+    public Actor(Game game, float x, float y, int width, int height) {
+        super(game, x, y, width, height);    //sends to the entity class constructor
         health=DEFAULT_HEALTH;
         speed=DEFAULT_SPEED;
     }

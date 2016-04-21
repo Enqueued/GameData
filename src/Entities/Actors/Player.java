@@ -9,16 +9,15 @@ import java.awt.*;
  * Created by Parzival on 4/20/2016.
  */
 public class Player extends Actor {
-    private Game game;
     public Player(Game game, float x, float y) {
-        super(x, y, Actor.DEFAULT_ACT_WIDE,Actor.DEFAULT_ACT_HIGH);
-        this.game=game;
+        super(game, x, y, Actor.DEFAULT_ACT_WIDE,Actor.DEFAULT_ACT_HIGH);
     }
 
     @Override
     public void tick() {
         getInput();
         move();
+        game.getCam().camFocus(this);
     }
 
     private void getInput(){
@@ -40,6 +39,6 @@ public class Player extends Actor {
 
     @Override
     public void render(Graphics g){
-        g.drawImage(Assets.player,(int)x,(int)y, width, height, null);
+        g.drawImage(Assets.player,(int)(x-game.getCam().getxOff()),(int)(y-game.getCam().getyOff()), width, height, null);
     }
 }

@@ -6,7 +6,7 @@ package main_pack;
  */
 public class Launcher{
     public static void main(String[] args){
-        Game game = new Game("main_pack.Game:\nmain_pack.Game!!!", 600, 600);
+        Game game = new Game("main_pack.Game:\nmain_pack.Game!!!", 300, 300);
         game.start();
     }
 }

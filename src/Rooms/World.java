@@ -2,6 +2,7 @@ package Rooms;
 
 import Tiles.Tile;
 import Utils.Utilz;
+import main_pack.Game;
 
 import java.awt.*;
 
@@ -9,11 +10,13 @@ import java.awt.*;
  * Created by Parzival on 4/20/2016.
  */
 public class World {
+    private Game game;
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
 
-    public World(String path){
+    public World(Game game, String path){
+        this.game=game;
         loadWorld(path);
     }
     public void tick(){
@@ -23,7 +26,8 @@ public class World {
 
         for(int y=0; y<height; y++){
             for(int x=0; x<width; x++){
-                getTile(x, y).render(g, x*Tile.TILEWIDE, y*Tile.TILEHIGH);
+                getTile(x, y).render(g, (int)(x*Tile.TILEWIDE - game.getCam().getxOff()),
+                        (int)(y*Tile.TILEHIGH - game.getCam().getyOff()));
             }
         }
     }

@@ -25,7 +25,7 @@ public class Game implements Runnable{
     private State invS;
     private State menuS;
     private KeyManager keyM;
-
+    private Game_Camera cam;
     //private BufferedImage map;
 
     public Game(String t, int w, int h){
@@ -39,6 +39,8 @@ public class Game implements Runnable{
         dis=new Display(title,width,height);
         dis.getFrame().addKeyListener(keyM);
         Assets.init();
+
+        cam = new Game_Camera(this, 0,0);
 
         gState=new GameState(this);
         invS = new InvState(this);
@@ -97,6 +99,10 @@ public class Game implements Runnable{
 
     public KeyManager getKeyManager(){
         return keyM;
+    }
+
+    public Game_Camera getCam(){
+        return cam;
     }
 
     public synchronized void start(){

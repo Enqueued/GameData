@@ -17,13 +17,16 @@ public class GameState extends State {
     public GameState(Game game){
         super(game);
         player=new Player(game, 100, 100);
-        world = new World("assets/rooms/room1.txt");
+        world = new World(game, "assets/rooms/room1.txt");
+
+       // game.getCam().move(0, 0);
     }
 
     @Override
     public void tick() {
         world.tick();
         player.tick();
+       // game.getCam().move(1, 1);
     }
 
     @Override
