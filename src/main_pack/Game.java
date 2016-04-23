@@ -40,9 +40,9 @@ public class Game implements Runnable{
         dis=new Display(title,width,height);
         dis.getFrame().addKeyListener(keyM);
         Assets.init();
-
-        cam = new Game_Camera(this, 0,0);
         hands=new Handler(this);
+        cam = new Game_Camera(hands, 0,0);
+
         gState=new GameState(hands);
         invS = new InvState(hands);
         menuS=new MenuState(hands);

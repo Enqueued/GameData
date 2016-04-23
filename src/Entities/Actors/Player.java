@@ -46,7 +46,7 @@ public class Player extends Actor {
     public void render(Graphics g){
         g.drawImage(Assets.player,(int)(x-hands.getCam().getxOff()),(int)(y-hands.getCam().getyOff()), width, height, null);
         g.setColor(Color.black);
-        g.fillRect((int)(x+bound.x-hands.getCam().getxOff()),
-                (int)(y+bound.y-hands.getCam().getyOff()), bound.width, bound.height);
+       // g.fillRect((int)(x+bound.x-hands.getCam().getxOff()),
+                //(int)(y+bound.y-hands.getCam().getyOff()), bound.width, bound.height);
     }
 }
