@@ -15,7 +15,10 @@ public class MenuState extends State {
 
     @Override
     public void tick() {
-        System.out.println(hands.getMouseManager().getMouseX()+"\t"+hands.getMouseManager().getMouseY());
+        //System.out.println(hands.getMouseManager().getMouseX()+"\t"+hands.getMouseManager().getMouseY());
+        if(hands.getMouseManager().isLeftPressed()&&hands.getMouseManager().isRightPressed()){
+            StateManager.setState(hands.getGame().gState);
+        }
 
     }
 
