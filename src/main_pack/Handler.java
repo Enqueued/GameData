@@ -3,6 +3,7 @@ package main_pack;
 import Rooms.World;
 import graphic_launch.Game_Camera;
 import input.KeyManager;
+import input.MouseManager;
 
 /**
  * Created by Parzival on 4/21/2016.
@@ -19,6 +20,9 @@ public class Handler {
     }
     public KeyManager getKeys(){
         return game.getKeyManager();
+    }
+    public MouseManager getMouseManager(){
+        return game.getMouseM();
     }
     public int getWidth(){
         return game.width;

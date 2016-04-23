@@ -1,5 +1,9 @@
 package Rooms;
 
+import Entities.Actors.GuildHead;
+import Entities.Actors.Player;
+import Entities.Emanager;
+import Entities.Static.Chest;
 import Tiles.Tile;
 import Utils.Utilz;
 import main_pack.Game;
@@ -15,13 +19,19 @@ public class World {
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
+    private Emanager entityManager;
 
     public World(Handler hands, String path){
         this.handler = hands;
+        entityManager=new Emanager(hands, new Player(handler, 100, 100));
+        entityManager.addEntity(new Chest(handler, 100, 304));
+        entityManager.addEntity(new GuildHead(handler, 300, 304));
         loadWorld(path);
+        entityManager.getPlayer().setX(spawnX);
+        entityManager.getPlayer().setX(spawnY);
     }
     public void tick(){
-
+        entityManager.tick();
     }
     public void render(Graphics g){
         int xMin=(int)Math.max(0, handler.getCam().getxOff()/Tile.TILEWIDE);
@@ -35,6 +45,7 @@ public class World {
                         (int)(y*Tile.TILEHIGH - handler.getCam().getyOff()));
             }
         }
+        entityManager.render(g);
     }
 
     public Tile getTile(int x, int y){
@@ -70,6 +81,9 @@ public class World {
     }
     public int getHeight(){
         return height;
+    }
+    public Emanager getEntityManager(){
+        return entityManager;
     }
 
 }

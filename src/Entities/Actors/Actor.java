@@ -21,10 +21,14 @@ public abstract class Actor extends Entity {
         super(hands, x, y, width, height);    //sends to the entity class constructor
         health=DEFAULT_HEALTH;
         speed=DEFAULT_SPEED;
+        xMove=0;
+        yMove=0;
     }
     public void move(){
-        moveX();
-        moveY();
+        if(!checkCollide(xMove, 0f))
+            moveX();
+        if (!checkCollide(0f, yMove))
+            moveY();
     }
     public void moveX(){
         if(xMove>0){

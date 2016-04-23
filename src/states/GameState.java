@@ -1,6 +1,7 @@
 package states;
 
 import Entities.Actors.Player;
+import Entities.Static.Chest;
 import Rooms.World;
 import Tiles.Tile;
 import graphic_launch.Assets;
@@ -13,19 +14,19 @@ import java.awt.*;
  * Created by main on 4/20/16.
  */
 public class GameState extends State {
-    private Player player;
     private World world;
+
     public GameState(Handler hands){
         super(hands);
         world = new World(hands, "assets/rooms/room1.txt");
         hands.setWorld(world);
-        player=new Player(hands, 100, 100);
+        //player=new Player(hands, 100, 100);
     }
 
     @Override
     public void tick() {
         world.tick();
-        player.tick();
+        //player.tick();
        // game.getCam().move(1, 1);
     }
 
@@ -33,7 +34,7 @@ public class GameState extends State {
     public void render(Graphics g) {
         world.render(g);
         // g.drawImage(Assets.player,0,0,null);
-        player.render(g);
+        //player.render(g);
         //Tile.tiles[0].render(g, 0, 0);
     }
 }

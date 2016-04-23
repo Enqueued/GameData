@@ -1,6 +1,5 @@
 package Entities;
 
-import main_pack.Game;
 import main_pack.Handler;
 
 import java.awt.*;
@@ -26,6 +25,19 @@ public abstract class Entity {
     public abstract void tick();
     public abstract void render(Graphics g);
 
+    public boolean checkCollide(float xOff, float yOff){
+        for( Entity e : (hands.getWorld().getEntityManager().getEntities())) {
+            if(e.equals(this))
+                continue;
+            if (e.getBound(0f, 0f).intersects(getBound(xOff, yOff)))
+               return true;
+        }
+        return false;
+    }
+
+    public Rectangle getBound(float xOff, float yOff){
+        return new Rectangle((int)(x+bound.x+xOff), (int)(y+bound.y+yOff),bound.width, bound.height);
+    }
     //Getters
     public float getX(){
         return x;

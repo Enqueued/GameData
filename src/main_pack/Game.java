@@ -2,6 +2,7 @@ package main_pack;
 
 import graphic_launch.*; //graphics package for image loading
 import input.KeyManager;
+import input.MouseManager;
 import states.*;
 
 import java.awt.*;
@@ -21,10 +22,11 @@ public class Game implements Runnable{
     private Thread thread;
     private BufferStrategy buff; //used to prevent screen flashing
     private Graphics g;
-    private State gState;
-    private State invS;
-    private State menuS;
+    public State gState;
+    public State invS;
+    public State menuS;
     private KeyManager keyM;
+    private MouseManager mouseM;
     private Game_Camera cam;
     private Handler hands;
     //private BufferedImage map;
@@ -34,19 +36,25 @@ public class Game implements Runnable{
         this.height=h;
         this.title=t;
         keyM=new KeyManager();
+        mouseM=new MouseManager();
     }
 
     public void init(){
         dis=new Display(title,width,height);
         dis.getFrame().addKeyListener(keyM);
+        dis.getFrame().addMouseListener(mouseM);
+        dis.getFrame().addMouseMotionListener(mouseM);
+        dis.getCanvas().addMouseListener(mouseM);
+        dis.getCanvas().addMouseMotionListener(mouseM);
         Assets.init();
+
         hands=new Handler(this);
         cam = new Game_Camera(hands, 0,0);
 
         gState=new GameState(hands);
         invS = new InvState(hands);
         menuS=new MenuState(hands);
-        StateManager.setState(gState);
+        StateManager.setState(menuS);
     }
 
     /**
@@ -101,7 +109,9 @@ public class Game implements Runnable{
     public KeyManager getKeyManager(){
         return keyM;
     }
-
+    public MouseManager getMouseM(){
+        return mouseM;
+    }
     public Game_Camera getCam(){
         return cam;
     }

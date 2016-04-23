@@ -15,11 +15,13 @@ public class MenuState extends State {
 
     @Override
     public void tick() {
+        System.out.println(hands.getMouseManager().getMouseX()+"\t"+hands.getMouseManager().getMouseY());
 
     }
 
     @Override
     public void render(Graphics g) {
-
+        g.setColor(Color.blue);
+        g.fillRect(hands.getMouseManager().getMouseX(), hands.getMouseManager().getMouseY(),10,10);
     }
 }
