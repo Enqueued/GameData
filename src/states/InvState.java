@@ -5,6 +5,7 @@ import main_pack.Handler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 import static com.sun.javafx.fxml.expression.Expression.add;
 
@@ -13,25 +14,34 @@ import static com.sun.javafx.fxml.expression.Expression.add;
  */
 public class InvState extends State{
     public JButton button;
+    private JPanel jPanel;
     private Font font;
     public InvState(Handler hands){
         super(hands);
-        font = new Font("Monospaced", Font.BOLD + Font.ITALIC, 30);
-        button = new JButton("Switch Panels");
-        button.setFont(font);
-        add(button, BorderLayout.NORTH);
+
     }
     @Override
     public void tick() {
         if(hands.getKeys().pause){
-            StateManager.setState(hands.getGame().gState);
+            StateManager.setState(hands.getGame().invS);
         }
+        jPanel.repaint();
     }
 
 
 
     @Override
     public void render(Graphics g) {
-
+        //g.drawButton();
+        jPanel=new JPanel();
+        font = new Font("Monospaced", Font.BOLD + Font.ITALIC, 30);
+        button = new JButton("Switch Panels");
+        button.setFont(font);
+        //add(button, BorderLayout.NORTH);
+        //add(jPanel, BorderLayout.CENTER);
+        jPanel.setBackground(Color.cyan);
+        jPanel.add(button);
+        button.addKeyListener(hands.getKeys());
     }
+
 }
