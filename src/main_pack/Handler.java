@@ -1,6 +1,6 @@
 package main_pack;
 
-import Rooms.World;
+import World.World;
 import graphic_launch.Game_Camera;
 import input.KeyManager;
 import input.MouseManager;

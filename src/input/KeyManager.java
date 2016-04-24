@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
  */
 public class KeyManager implements KeyListener{
     private boolean[] keys;
-    public boolean n, s, e, w, start;
+    public boolean n, s, e, w, start, pause;
     public KeyManager(){
         keys = new boolean[256];
     }
@@ -20,6 +20,7 @@ public class KeyManager implements KeyListener{
         w=keys[KeyEvent.VK_A];
         e=keys[KeyEvent.VK_D];
         start=keys[KeyEvent.VK_ENTER];
+        pause=keys[KeyEvent.VK_ESCAPE];
     }
 
     @Override

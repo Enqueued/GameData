@@ -1,11 +1,6 @@
 package states;
 
-import Entities.Actors.Player;
-import Entities.Static.Chest;
-import Rooms.World;
-import Tiles.Tile;
-import graphic_launch.Assets;
-import main_pack.Game;
+import World.World;
 import main_pack.Handler;
 
 import java.awt.*;
@@ -26,6 +21,9 @@ public class GameState extends State {
     @Override
     public void tick() {
         world.tick();
+        if(hands.getKeys().pause){
+            StateManager.setState(hands.getGame().invS);
+        }
         //player.tick();
        // game.getCam().move(1, 1);
     }

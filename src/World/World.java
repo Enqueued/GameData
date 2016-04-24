@@ -1,4 +1,4 @@
-package Rooms;
+package World;
 
 import Entities.Actors.GuildHead;
 import Entities.Actors.Player;
@@ -6,7 +6,6 @@ import Entities.Emanager;
 import Entities.Static.Chest;
 import Tiles.Tile;
 import Utils.Utilz;
-import main_pack.Game;
 import main_pack.Handler;
 
 import java.awt.*;

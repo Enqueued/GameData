@@ -3,12 +3,15 @@ package states;
 import main_pack.Game;
 import main_pack.Handler;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
  * Created by main on 4/20/16.
  */
 public class MenuState extends State {
+    private JButton start;
+
     public MenuState(Handler hands){
         super(hands);
     }
@@ -26,5 +29,6 @@ public class MenuState extends State {
     public void render(Graphics g) {
         g.setColor(Color.blue);
         g.fillRect(hands.getMouseManager().getMouseX(), hands.getMouseManager().getMouseY(),10,10);
+
     }
 }
