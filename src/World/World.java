@@ -27,7 +27,7 @@ public class World {
         entityManager.addEntity(new GuildHead(handler, 300, 304));
         loadWorld(path);
         entityManager.getPlayer().setX(spawnX);
-        entityManager.getPlayer().setX(spawnY);
+        entityManager.getPlayer().setY(spawnY);
     }
     public void tick(){
         entityManager.tick();

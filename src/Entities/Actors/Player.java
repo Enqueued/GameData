@@ -1,5 +1,9 @@
 package Entities.Actors;
 
+import Classes.Cleric;
+import Classes.Fighter;
+import Classes.Mage;
+import Classes.Rouge;
 import graphic_launch.Anime;
 import graphic_launch.Assets;
 import main_pack.Game;
@@ -9,11 +13,19 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
+ * This is used to set all current stuff in the player
  * Created by Parzival on 4/20/2016.
  */
 public class Player extends Actor {
     private Anime animeDown, animeUp, animeLeft, animeRight;
-
+    public Class myClass;
+    /**
+     * the constructor for the player
+     * this will set its bounding box and some animations
+     * @param hands
+     * @param x
+     * @param y
+     */
     public Player(Handler hands, float x, float y) {
         super(hands, x, y, Actor.DEFAULT_ACT_WIDE,Actor.DEFAULT_ACT_HIGH);
         bound.x=8;
@@ -38,6 +50,10 @@ public class Player extends Actor {
         hands.getCam().camFocus(this);
     }
 
+    /**
+     * will set up the keys to do certain things
+     * like movement for example
+     */
     private void getInput(){
         xMove=0;
         yMove=0;
@@ -62,6 +78,13 @@ public class Player extends Actor {
        // g.fillRect((int)(x+bound.x-hands.getCam().getxOff()),
                 //(int)(y+bound.y-hands.getCam().getyOff()), bound.width, bound.height);
     }
+
+    /**
+     * this will return the current animation frame that is being used
+     * not the current hit anime like One Punch Man that was amazing and fantastic
+     * ONE PUNNNNNNNNNNNCH!!!
+     * @return
+     */
     private BufferedImage getCurrentAnime(){
         if(xMove<0){
             return animeLeft.getCurrentFrame();
@@ -71,6 +94,20 @@ public class Player extends Actor {
             return animeUp.getCurrentFrame();
         }else{
             return animeDown.getCurrentFrame();
+        }
+    }
+
+    public void setClass(String s){
+        if(s.equals("fighter")){
+            myClass = Fighter;
+        }else if(s.equals("mage")){
+            myClass= Mage;
+        }else if(s.equals("cleric")){
+            myClass= Cleric;
+        }else if(s.equals("rouge")){
+            myClass= Rouge;
+        }else{
+            myClass=Fighter;
         }
     }
 }

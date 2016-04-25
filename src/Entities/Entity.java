@@ -5,6 +5,8 @@ import main_pack.Handler;
 import java.awt.*;
 
 /**
+ * This class is what all other PCs and NPCs are based off of.
+ * Basic bounding boxes along with various size vars
  * Created by Parzival on 4/20/2016.
  */
 public abstract class Entity {
@@ -13,6 +15,15 @@ public abstract class Entity {
     protected int width, height;
     protected Rectangle bound;
 
+    /**
+     * The constructor for the Entity class
+     * will set the basis up
+     * @param hands
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
     public Entity(Handler hands, float x, float y, int width, int height){
         this.hands=hands;
         this.x=x;
@@ -25,6 +36,14 @@ public abstract class Entity {
     public abstract void tick();
     public abstract void render(Graphics g);
 
+    /**
+     * This should be used to check the collision between an entity and other entities
+     * xoff is the current x position
+     * yOff is the current y position
+     * @param xOff
+     * @param yOff
+     * @return
+     */
     public boolean checkCollide(float xOff, float yOff){
         for( Entity e : (hands.getWorld().getEntityManager().getEntities())) {
             if(e.equals(this))
@@ -35,6 +54,12 @@ public abstract class Entity {
         return false;
     }
 
+    /**
+     * returns the bounds of an entity
+     * @param xOff
+     * @param yOff
+     * @return
+     */
     public Rectangle getBound(float xOff, float yOff){
         return new Rectangle((int)(x+bound.x+xOff), (int)(y+bound.y+yOff),bound.width, bound.height);
     }

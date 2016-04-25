@@ -17,6 +17,14 @@ public abstract class Actor extends Entity {
     public static final int DEFAULT_ACT_WIDE=32;
     public static final int DEFAULT_ACT_HIGH=32;
 
+    /**
+     * the constructor for the Actor class which the player is based off of
+     * @param hands the handler var
+     * @param x the position in terms of x
+     * @param y the position in terms of y
+     * @param width the width of the actor
+     * @param height the height of the actor
+     */
     public Actor(Handler hands, float x, float y, int width, int height) {
         super(hands, x, y, width, height);    //sends to the entity class constructor
         health=DEFAULT_HEALTH;
@@ -24,12 +32,23 @@ public abstract class Actor extends Entity {
         xMove=0;
         yMove=0;
     }
+
+    /**
+     * this is the base for movement where it will check that there is nothing hindering the Actor in the space they are
+     * trying to move to
+     */
     public void move(){
         if(!checkCollide(xMove, 0f))
             moveX();
         if (!checkCollide(0f, yMove))
             moveY();
     }
+
+    /**
+     * This is for movement based along the X axis
+     * This is how the player moves, it look to see if the collision is false in both top and bottom of the
+     * entities bounding box and will either render it at the original space or move it accordingly
+     */
     public void moveX(){
         if(xMove>0){
             int tx = (int)(x+xMove+bound.x+bound.width)/Tile.TILEWIDE;
@@ -46,6 +65,12 @@ public abstract class Actor extends Entity {
         }
 
     }
+
+    /**
+     * This is the movement based on the Y axis
+     * This is how the player moves, it look to see if the collision is false in both top and bottom of the
+     * entities bounding box and will either render it at the original space or move it accordingly
+     */
     public void moveY(){
         if(yMove<0){
             int ty = (int)(y+yMove+bound.y)/Tile.TILEHIGH;
@@ -62,6 +87,12 @@ public abstract class Actor extends Entity {
         }
     }
 
+    /**
+     * This will help the Actor check if a position is a solid and therefore wont move to said position
+     * @param x this is the future tile that it is checking (along x)
+     * @param y ditto(along y)
+     * @return  ret true or false
+     */
     protected boolean collision(int x, int y){
         return hands.getWorld().getTile(x,y).isSolid();
     }
