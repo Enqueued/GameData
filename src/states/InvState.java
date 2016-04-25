@@ -6,7 +6,7 @@ import main_pack.Handler;
 import javax.swing.*;
 import java.awt.*;
 
-import static com.sun.javafx.fxml.expression.Expression.add;
+//import static com.sun.javafx.fxml.expression.Expression.add;
 
 /**
  * Created by main on 4/20/16.
@@ -16,10 +16,10 @@ public class InvState extends State{
     private Font font;
     public InvState(Handler hands){
         super(hands);
-        font = new Font("Monospaced", Font.BOLD + Font.ITALIC, 30);
+        /*font = new Font("Monospaced", Font.BOLD + Font.ITALIC, 30);
         button = new JButton("Switch Panels");
         button.setFont(font);
-        add(button, BorderLayout.NORTH);
+        add(button, BorderLayout.NORTH);*/
     }
     @Override
     public void tick() {
@@ -33,5 +33,10 @@ public class InvState extends State{
     @Override
     public void render(Graphics g) {
 
+    }
+    private JPanel PanelCreate(){
+        JPanel me = new JPanel();
+        me.add(button);
+        return null;
     }
 }

@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
  * Created by Parzival on 4/23/2016.
  */
 public class GuildHead extends Actor {
-
+    private boolean initial_Speak=false;
     private Anime animeDown;
 
     public GuildHead(Handler hands, float x, float y) {
@@ -37,10 +37,16 @@ public class GuildHead extends Actor {
 
     public void render(Graphics g) {
         g.drawImage(getCurrentAnime(),(int)(x-hands.getCam().getxOff()),(int)(y-hands.getCam().getyOff()), width, height, null);
+        if((checkCollide(hands.getCam().getxOff(), hands.getCam().getyOff()) == true || hands.getKeys().start)){
+            g.drawRect(0, 300, 400, 100);
+            g.drawString("Hello there I am a holder image\nfor the real GuildLeader.\n He'll be back soon enough",
+                    20,350);
+        }
     }
-    private void getInput(){
-        if(hands.getKeys().start)
+    private void getInput() {
+        if (hands.getKeys().start){
             System.out.println("I am talking now");
+        }
 
     }
     private BufferedImage getCurrentAnime(){

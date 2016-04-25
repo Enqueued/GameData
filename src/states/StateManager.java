@@ -1,9 +1,12 @@
 package states;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * Created by Parzival on 4/20/16.
  */
-public class StateManager {
+public class StateManager{
     private static State currS = null;
 
     /**
@@ -21,4 +24,5 @@ public class StateManager {
     public static State getState(){
         return currS;
     }
+
 }
