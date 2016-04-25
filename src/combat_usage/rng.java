@@ -17,8 +17,13 @@ public class rng {
      */
     public static int rng_maker(int max, int min){
         Random rand=new Random();
-        int n = max - min + 1;
+        /*int n = max - min + 1;
         int k = rand.nextInt() % n;
-        return (min+k);
+        return (min+k);*/
+        int k = rand.nextInt(max);
+        while (k <= min){
+            k=rand.nextInt(max);
+        }
+        return k;
     }
 }

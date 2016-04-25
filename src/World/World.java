@@ -6,6 +6,8 @@ import Entities.Emanager;
 import Entities.Static.Chest;
 import Tiles.Tile;
 import Utils.Utilz;
+import combat_usage.Combat_Game;
+import combat_usage.rng;
 import main_pack.Handler;
 
 import java.awt.*;
@@ -19,6 +21,8 @@ public class World {
     private int spawnX, spawnY;
     private int[][] tiles;
     private Emanager entityManager;
+    public int rand = rng.rng_maker(400, 50);
+    //private Thread thread;
 
     public World(Handler hands, String path){
         this.handler = hands;
@@ -45,6 +49,16 @@ public class World {
             }
         }
         entityManager.render(g);
+        System.out.println("Random number "+rand);
+        if(entityManager.getPlayer().steps >= rand){
+            entityManager.getPlayer().steps=0;
+            //handler.getGame().stop();
+            //this.thread= new Thread();
+            handler.getGame().combat = new Combat_Game(handler);
+            //handler.getGame().stop();
+            handler.getGame().combat.render(g);
+            //handler.getGame().start();
+        }
     }
 
     public Tile getTile(int x, int y){

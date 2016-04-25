@@ -32,7 +32,7 @@ public class Tile {
     public void render(Graphics g, int x, int y){
         g.drawImage(texture, x, y, TILEWIDE, TILEHIGH, null);
     }
-    /*public getID(){
+    public int getID(){
         return id;
-    }*/
+    }
 }

@@ -38,8 +38,9 @@ public abstract class Actor extends Entity {
      * trying to move to
      */
     public void move(){
-        if(!checkCollide(xMove, 0f))
+        if(!checkCollide(xMove, 0f)) {
             moveX();
+        }
         if (!checkCollide(0f, yMove))
             moveY();
     }

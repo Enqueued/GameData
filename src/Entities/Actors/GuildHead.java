@@ -1,8 +1,10 @@
 package Entities.Actors;
 
+import Tiles.Tile;
 import graphic_launch.Anime;
 import graphic_launch.Assets;
 import main_pack.Handler;
+import states.GameState;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -16,6 +18,7 @@ import java.awt.image.BufferedImage;
 public class GuildHead extends Actor {
     private boolean initial_Speak=false;
     private Anime animeDown;
+    private Tile tile;
 
     /**
      * This is the constructor for the GuildLeader
@@ -49,11 +52,18 @@ public class GuildHead extends Actor {
     public void render(Graphics g) {
         g.drawImage(getCurrentAnime(),(int)(x-hands.getCam().getxOff()),(int)(y-hands.getCam().getyOff()), width, height, null);
         if(getInput()/*&&(Entity.checkCollide(Emanager.getPlayer().getY(), Emanager.getPlayer().getX()))*/){
+            /*for(int i=0; i<400; i++){
+                tile = new Tile(Assets.tree,2);
+                tile.render(g, i, 300);
+            }*/
             g.setColor(Color.black);
             g.fillRect(0, 300, 400, 100);
+
             g.setColor(Color.cyan);
             g.drawString("Hello there I am a holder image for the real GuildLeader.",20,350);
             g.drawString("He'll be back soon enough", 20, 370);
+            hands.getGame().gState = new GameState(hands, GameState.getRoom(2));
+            hands.getGame();
         }
     }
 

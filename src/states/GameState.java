@@ -10,10 +10,15 @@ import java.awt.*;
  */
 public class GameState extends State {
     private World world;
-
-    public GameState(Handler hands){
+    public static String star = "assets/rooms/room1.txt";
+    public static String dung  = "assets/rooms/Dungeon1.txt";
+    public GameState(Handler hands, String num){
         super(hands);
-        world = new World(hands, "assets/rooms/room1.txt");
+        if (num.equals(dung)){
+            world = new World(hands,dung);
+        }else {
+            world = new World(hands, star);
+        }
         hands.setWorld(world);
         //player=new Player(hands, 100, 100);
     }
@@ -34,5 +39,12 @@ public class GameState extends State {
         // g.drawImage(Assets.player,0,0,null);
         //player.render(g);
         //Tile.tiles[0].render(g, 0, 0);
+    }
+    public static String getRoom(int num){
+        if (num == 1){
+            return star;
+        }else{
+            return dung;
+        }
     }
 }

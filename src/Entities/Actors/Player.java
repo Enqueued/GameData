@@ -19,6 +19,7 @@ import java.awt.image.BufferedImage;
 public class Player extends Actor {
     private Anime animeDown, animeUp, animeLeft, animeRight;
     public Class myClass;
+    public int steps;
     /**
      * the constructor for the player
      * this will set its bounding box and some animations
@@ -59,16 +60,22 @@ public class Player extends Actor {
         yMove=0;
         if(hands.getKeys().n){
             yMove = -speed;
+            steps++;
         }
         if(hands.getKeys().s){
             yMove = speed;
+            steps++;
         }
         if(hands.getKeys().w){
             xMove = -speed;
+            steps++;
         }
         if(hands.getKeys().e){
             xMove = speed;
+            steps++;
         }
+
+        System.out.println("Steps "+steps);
     }
 
     @Override

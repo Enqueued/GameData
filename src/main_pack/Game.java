@@ -1,5 +1,6 @@
 package main_pack;
 
+import combat_usage.Combat_Game;
 import graphic_launch.*; //graphics package for image loading
 import input.KeyManager;
 import input.MouseManager;
@@ -28,7 +29,10 @@ public class Game implements Runnable{
     private KeyManager keyM;
     private MouseManager mouseM;
     private Game_Camera cam;
+    public Combat_Game combat;
     private Handler hands;
+
+   // public Combat_Game combat;
     //private BufferedImage map;
 
     public Game(String t, int w, int h){
@@ -37,6 +41,7 @@ public class Game implements Runnable{
         this.title=t;
         keyM=new KeyManager();
         mouseM=new MouseManager();
+        //combat=new Combat_Game(hands);
     }
 
     public void init(){
@@ -50,8 +55,7 @@ public class Game implements Runnable{
 
         hands=new Handler(this);
         cam = new Game_Camera(hands, 0,0);
-
-        gState=new GameState(hands);
+        gState=new GameState(hands, GameState.getRoom(1));
         invS = new InvState(hands);
         menuS=new MenuState(hands);
         StateManager.setState(menuS);
