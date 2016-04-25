@@ -76,7 +76,7 @@ public class Player extends Actor {
         g.drawImage(getCurrentAnime(),(int)(x-hands.getCam().getxOff()),(int)(y-hands.getCam().getyOff()), width, height, null);
         //g.setColor(Color.black);
        // g.fillRect((int)(x+bound.x-hands.getCam().getxOff()),
-                //(int)(y+bound.y-hands.getCam().getyOff()), bound.width, bound.height);
+            //(int)(y+bound.y-hands.getCam().getyOff()), bound.width, bound.height);
     }
 
     /**
@@ -97,7 +97,7 @@ public class Player extends Actor {
         }
     }
 
-    public void setClass(String s){
+    /*public void setClass(String s){
         if(s.equals("fighter")){
             myClass = Fighter;
         }else if(s.equals("mage")){
@@ -109,5 +109,5 @@ public class Player extends Actor {
         }else{
             myClass=Fighter;
         }
-    }
+    }*/
 }

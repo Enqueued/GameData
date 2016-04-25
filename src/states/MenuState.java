@@ -11,9 +11,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 /**
- * Created by main on 4/20/16.
+ * This WILL be the main menu leading into the game
+ * just need to figure out how to do that
+ * Created by Parzival on 4/20/16.
  */
 public class MenuState extends State implements ActionListener{
+    private JButton butt;
+    /**
+     * This is the constructor for the main menu
+     * @param hands
+     */
     public MenuState(Handler hands) {
         super(hands);
     }
@@ -27,10 +34,21 @@ public class MenuState extends State implements ActionListener{
 
     }
 
+    /**
+     * need to fix the button and make it ACTUALLY a button
+     * @param g
+     */
     @Override
     public void render(Graphics g) {
+        /*butt=new JButton("Goto Game!");
+        hands.getGame().dis.getFrame().add(butt);*/
+        g.setColor(Color.BLACK);
+        g.fillRect(100,100,200,100);
+        g.setColor(Color.white);
+        g.drawString("This will make you go to the game!", 105, 150);
         g.setColor(Color.blue);
         g.fillRect(hands.getMouseManager().getMouseX(), hands.getMouseManager().getMouseY(),10,10);
+
         //hands.getGame().init();
 
     }

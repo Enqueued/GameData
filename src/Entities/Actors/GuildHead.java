@@ -40,11 +40,18 @@ public class GuildHead extends Actor {
 
     }
 
+    /**
+     * need to make the text have bounds to check if its a solid and shiz
+     * may want to just draw a bunch of stone blocks, shove text on there then the character cant walk there!
+     * @param g
+     */
     @Override
     public void render(Graphics g) {
         g.drawImage(getCurrentAnime(),(int)(x-hands.getCam().getxOff()),(int)(y-hands.getCam().getyOff()), width, height, null);
         if(getInput()/*&&(Entity.checkCollide(Emanager.getPlayer().getY(), Emanager.getPlayer().getX()))*/){
-            g.drawRect(0, 300, 400, 100);
+            g.setColor(Color.black);
+            g.fillRect(0, 300, 400, 100);
+            g.setColor(Color.cyan);
             g.drawString("Hello there I am a holder image for the real GuildLeader.",20,350);
             g.drawString("He'll be back soon enough", 20, 370);
         }
