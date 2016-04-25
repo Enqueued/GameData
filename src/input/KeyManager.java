@@ -24,6 +24,10 @@ public class KeyManager implements KeyListener{
         pause=keys[KeyEvent.VK_ESCAPE];
     }
 
+    public boolean isKeyPressed(KeyEvent e){
+        return keys[e.getKeyCode()];
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
 

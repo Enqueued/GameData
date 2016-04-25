@@ -17,7 +17,7 @@ public class Game implements Runnable{
     public int width, height;
     public String title;
 
-    private Display dis;
+    public Display dis;
     private boolean running;
     private Thread thread;
     private BufferStrategy buff; //used to prevent screen flashing
