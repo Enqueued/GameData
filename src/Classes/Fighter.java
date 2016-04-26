@@ -17,17 +17,17 @@ public class Fighter extends Face_Hitter implements Base_Stat{
     }
 
     @Override
-    public int get_dmg(String weapon) {
-        return 0;
-    }
+    public int get_dmg(String weapon) {return rng.rng_maker(1,12)+strength;}
 
     @Override
     public int get_dodge() {
-        return 0;
+        return 17;
     }
 
     @Override
     public int get_gud() {
         return 0;
     }
+
+    public int get_hit() {return rng.rng_maker(1,20) + strength;}
 }

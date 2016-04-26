@@ -26,11 +26,13 @@ public class Game implements Runnable{
     public State gState;
     public State invS;
     public State menuS;
+    public State cState;
     private KeyManager keyM;
     private MouseManager mouseM;
     private Game_Camera cam;
     public Combat_Game combat;
     private Handler hands;
+    public int fps;
 
    // public Combat_Game combat;
     //private BufferedImage map;
@@ -58,6 +60,7 @@ public class Game implements Runnable{
         gState=new GameState(hands, GameState.getRoom(1));
         invS = new InvState(hands);
         menuS=new MenuState(hands);
+        cState=new CombatState(hands);
         StateManager.setState(menuS);
     }
 
@@ -91,7 +94,7 @@ public class Game implements Runnable{
 
     public void run(){
         init();
-        int fps=60;
+        fps=60;
         double tpt=1000000000/fps; //100000000 nanosecs per 1 sec
         double delta=0;
         long now;

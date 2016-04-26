@@ -78,7 +78,7 @@ public class GuildHead extends Actor {
         else
             return false;
     }
-    private BufferedImage getCurrentAnime(){
+    public BufferedImage getCurrentAnime(){
             return animeDown.getCurrentFrame();
     }
 }

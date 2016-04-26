@@ -9,6 +9,7 @@ import Utils.Utilz;
 import combat_usage.Combat_Game;
 import combat_usage.rng;
 import main_pack.Handler;
+import states.StateManager;
 
 import java.awt.*;
 
@@ -54,10 +55,15 @@ public class World {
             entityManager.getPlayer().steps=0;
             //handler.getGame().stop();
             //this.thread= new Thread();
-            handler.getGame().combat = new Combat_Game(handler);
+            //handler.getGame().combat = new Combat_Game(handler);
+            entityManager.player.setHealth(1000);
+            //handler.getGame().fps=5;
+            StateManager.setState(handler.getGame().cState);
             //handler.getGame().stop();
-            handler.getGame().combat.render(g);
+            //handler.getGame().combat.render(g);
             //handler.getGame().start();
+            rand = rng.rng_maker(400,50);
+
         }
     }
 

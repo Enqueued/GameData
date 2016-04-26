@@ -8,7 +8,7 @@ import Spell_Bookz.DynamicSpellsBook;
 public class Face_Hitter {
     public int strength, dex, con, wisdom, charm, intel;
     public Face_Hitter(){
-        DynamicSpellsBook punches = new DynamicSpellsBook("punches.txt");
+       // DynamicSpellsBook punches = new DynamicSpellsBook("punches.txt");
 
     }
 }
