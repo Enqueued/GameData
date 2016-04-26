@@ -26,7 +26,7 @@ public class CombatState extends State{ //implements ActionListener{
     private JButton butt;
     public Player player;
     public Player enemy;
-
+    public int i =0;
     /**
      * This is the constructor for the main menu
      * @param hands
@@ -79,8 +79,12 @@ public class CombatState extends State{ //implements ActionListener{
     }
     public void combatCheck(Graphics g, Player player, Player enemy ){
         g.setColor(Color.white);
+        int dmg = player.getdamage();
+        int health = enemy.getHealth();
+        g.drawString("Enemy Health: "+health, 190,185);
         if(player.get_hit() < 15){
             g.drawString("missed", 105, 275);
+            i=0;
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException e) {
@@ -88,13 +92,14 @@ public class CombatState extends State{ //implements ActionListener{
             }
         }
         else {
-            g.drawString("hit", 105, 300);
+            i++;
+            g.drawString("hit x"+i+ " for "+(dmg*i), 105, 300);
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            enemy.setHealth(enemy.getHealth() - player.getdamage());
+            enemy.setHealth(enemy.getHealth() - dmg);
         }
     }
     public void actionPerformed(ActionEvent e) {

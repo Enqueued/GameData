@@ -22,7 +22,7 @@ public class Game implements Runnable{
     private boolean running;
     private Thread thread;
     private BufferStrategy buff; //used to prevent screen flashing
-    private Graphics g;
+    public Graphics g;
     public State gState;
     public State invS;
     public State menuS;
