@@ -16,7 +16,7 @@ import java.awt.event.KeyEvent;
  * Created by Parzival on 4/20/16.
  */
 public class MenuState extends State implements ActionListener{
-    private JButton butt;
+
     /**
      * This is the constructor for the main menu
      * @param hands

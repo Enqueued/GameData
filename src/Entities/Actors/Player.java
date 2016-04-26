@@ -19,7 +19,7 @@ import java.awt.image.BufferedImage;
  */
 public class Player extends Actor {
     private Anime animeDown, animeUp, animeLeft, animeRight;
-    public Fighter myClass = new Fighter();
+    //public Fighter myClass = new Fighter();
     public int steps;
 
     /**

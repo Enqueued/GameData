@@ -14,7 +14,7 @@ public class Assets {
     private static final int bw=16, bh=16;
 
     //needs to be public because it will be sent to other things
-    public static BufferedImage wall, floor, enemy, grass, ground, tree;
+    public static BufferedImage wall, grass, ground, tree;
     public static BufferedImage[] player_down, player_up, player_left, player_right,
             guildhead_down, enemy_down;
 

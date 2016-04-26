@@ -113,12 +113,12 @@ public class CombatState extends State{ //implements ActionListener{
             enemy.setHealth(enemy.getHealth() - dmg);
         }
     }
-    public void actionPerformed(ActionEvent e) {
+    /*public void actionPerformed(ActionEvent e) {
         if("Switch to Game".equals(e.getActionCommand())){
             if(StateManager.getState()==hands.getGame().cState)
                 StateManager.setState(hands.getGame().gState);
         }
-    }
+    }*/
 //    @Override
    // public void actionPerformed(ActionEvent e) {
      //   if("Switch to Game".equals(e.getActionCommand())){

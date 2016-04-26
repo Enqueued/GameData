@@ -13,7 +13,6 @@ import java.awt.image.BufferStrategy;
  */
 public class Combat_Game extends JFrame {
     private Display dis;
-    private JButton butt;
     private JPanel pan;
     private Handler handler;
     private BufferStrategy buff;

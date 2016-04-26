@@ -15,27 +15,26 @@ import java.awt.image.*;
  */
 public class Game implements Runnable{
 
+    //public vars
     public int width, height;
     public String title;
-
     public Display dis;
-    private boolean running;
-    private Thread thread;
-    private BufferStrategy buff; //used to prevent screen flashing
     public Graphics g;
     public State gState;
     public State invS;
     public State menuS;
     public State cState;
+    public Combat_Game combat;
+    public int fps;
+
+    //private Vars
+    private boolean running;
+    private Thread thread;
+    private BufferStrategy buff; //used to prevent screen flashing
     private KeyManager keyM;
     private MouseManager mouseM;
     private Game_Camera cam;
-    public Combat_Game combat;
     private Handler hands;
-    public int fps;
-
-   // public Combat_Game combat;
-    //private BufferedImage map;
 
     public Game(String t, int w, int h){
         this.width=w;
@@ -113,6 +112,7 @@ public class Game implements Runnable{
         stop();
     }
 
+    //getters
     public KeyManager getKeyManager(){
         return keyM;
     }
@@ -123,6 +123,10 @@ public class Game implements Runnable{
         return cam;
     }
 
+    /**
+     * This is to sync up the thread and the states
+     * to try and set up the running variable
+     */
     public synchronized void start(){
         if(running)
             return;
@@ -131,6 +135,10 @@ public class Game implements Runnable{
         thread.start();
     }
 
+    /**
+     * This is to sync up the thread and the states
+     * to try and turn off the running variable
+     */
     public synchronized void stop(){
         if (!running)
             return;
