@@ -16,7 +16,7 @@ public class Assets {
     //needs to be public because it will be sent to other things
     public static BufferedImage wall, floor, enemy, grass, ground, tree;
     public static BufferedImage[] player_down, player_up, player_left, player_right,
-            guildhead_down;
+            guildhead_down, enemy_down;
 
     public static void init(){
         Spritez sheet = new Spritez(ImgLoad.loadImage("/textures/dragonwarrior_various_sheet.png"));
@@ -30,6 +30,8 @@ public class Assets {
 
         guildhead_down = new BufferedImage[2];
 
+        enemy_down = new BufferedImage[2];
+
         player_down[0]=sheet.crop(bw*0, 0, bw, bh);
         player_down[1]=sheet.crop(bw*1+4,0,bw,bh);
         player_up[0]=sheet.crop(bw*5,0,bw,bh);
@@ -41,6 +43,9 @@ public class Assets {
 
         guildhead_down[0]=sheet.crop(200,120, bw, bh);
         guildhead_down[1]=sheet.crop(220, 120, bw, bh);
+
+        enemy_down[0]=sheet.crop((200-48)+8,5*(16+4),bw,bh);
+        enemy_down[1]=sheet.crop((220-48)+8, 5*(16+4),bw,bh);
 
         grass = sheet.crop(64, 270, bw, bh);
         wall = sheet.crop(16, 204, bw, bh);

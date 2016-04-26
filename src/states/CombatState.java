@@ -1,9 +1,11 @@
 package states;
 
 import Entities.Actors.Actor;
+import Entities.Actors.Enemy;
 import Entities.Actors.GuildHead;
 import Entities.Actors.Player;
 import combat_usage.rng;
+import graphic_launch.Anime;
 import graphic_launch.Assets;
 import main_pack.Display;
 import main_pack.Game;
@@ -25,7 +27,8 @@ import java.util.concurrent.TimeUnit;
 public class CombatState extends State{ //implements ActionListener{
     private JButton butt;
     public Player player;
-    public Player enemy;
+    public Enemy enemy;
+    public Anime badime = new Anime(200, Assets.enemy_down);
     public int i =0;
     /**
      * This is the constructor for the main menu
@@ -34,7 +37,7 @@ public class CombatState extends State{ //implements ActionListener{
     public CombatState(Handler hands) {
         super(hands);
         player = hands.getWorld().getEntityManager().getPlayer();
-        enemy = hands.getWorld().getEntityManager().getPlayer();
+        enemy = hands.getWorld().getEntityManager().getEnemy();
         //enemy.setHealth(40);
     }
 
@@ -58,12 +61,13 @@ public class CombatState extends State{ //implements ActionListener{
         g.setColor(Color.BLACK);
         g.fillRect(0,0,500,500);
         g.setColor(Color.red);
-        g.drawImage(Assets.guildhead_down[0],200,200,100,100,null);
+        badime.tick();
+        g.drawImage(badime.getCurrentFrame(),200,200,100,100,null);
         g.drawString("fighting happens here", 105, 150);
         g.setColor(Color.blue);
         g.fillRect(hands.getMouseManager().getMouseX(), hands.getMouseManager().getMouseY(),10,10);
         g.setColor(Color.green);
-        if(enemy.getHealth() <= 0){
+        if(enemy.getHealth()<=0){
             g.drawString("you killed him! click to continue", 105, 350);
 
         }
@@ -77,7 +81,7 @@ public class CombatState extends State{ //implements ActionListener{
         //hands.getGame().init();
 
     }
-    public void combatCheck(Graphics g, Player player, Player enemy ){
+    public void combatCheck(Graphics g, Player player, Enemy enemy ){
         g.setColor(Color.white);
         int dmg = player.getdamage();
         int health = enemy.getHealth();

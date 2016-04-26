@@ -56,7 +56,7 @@ public class World {
             //handler.getGame().stop();
             //this.thread= new Thread();
             //handler.getGame().combat = new Combat_Game(handler);
-            entityManager.player.setHealth(1000);
+            entityManager.enemy.setHealth((entityManager.enemy.con)+rng.rng_maker(500,100));
             //handler.getGame().fps=5;
             StateManager.setState(handler.getGame().cState);
             //handler.getGame().stop();
