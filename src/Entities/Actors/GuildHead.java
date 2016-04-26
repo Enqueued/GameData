@@ -56,9 +56,10 @@ public class GuildHead extends Actor {
             g.fillRect(0, 300, 400, 100);
 
             g.setColor(Color.cyan);
-            g.drawString("Hello there I am a holder image for the real GuildLeader.",20,350);
-            g.drawString("He'll be back soon enough", 20, 370);
-            hands.getGame().gState = new GameState(hands, GameState.getRoom(2));
+            g.drawString("Hello there! I am a holder image for the real GuildLeader.",20,350);
+            g.drawString("He'll be back soon enough...", 20, 370);
+
+            //hands.getGame().gState = new GameState(hands, GameState.getRoom(2));
             hands.getGame();
         }
     }

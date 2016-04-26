@@ -29,5 +29,4 @@ public class Fighter extends Face_Hitter implements Base_Stat{
         return 0;
     }
 
-    public int get_hit() {return rng.rng_maker(1,20) + strength;}
 }
