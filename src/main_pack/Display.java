@@ -26,6 +26,8 @@ public class Display {
 
     private void makeDisp(){
         frame=new JFrame(title);
+        //JComponent comp = new DropDownMenu(null, null);
+        
         frame.setSize(width, height);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
