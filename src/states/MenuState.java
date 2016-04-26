@@ -43,9 +43,11 @@ public class MenuState extends State implements ActionListener{
         /*butt=new JButton("Goto Game!");
         hands.getGame().dis.getFrame().add(butt);*/
         g.setColor(Color.BLACK);
-        g.fillRect(100,100,200,100);
+        g.fillRect(0, 0,hands.getWidth(),hands.getHeight());
         g.setColor(Color.white);
-        g.drawString("This will make you go to the game!", 105, 150);
+        g.drawString("The Great Grind!", 150, 120);
+        g.setColor(Color.cyan);
+        g.drawString("This will make you go to the game!", 100, 200);
         g.setColor(Color.blue);
         g.fillRect(hands.getMouseManager().getMouseX(), hands.getMouseManager().getMouseY(),10,10);
 

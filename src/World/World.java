@@ -62,6 +62,7 @@ public class World {
             //handler.getGame().stop();
             //handler.getGame().combat.render(g);
             //handler.getGame().start();
+            //handler.getGame().cState.maxCombo=0;
             rand = rng.rng_maker(400,50);
 
         }
