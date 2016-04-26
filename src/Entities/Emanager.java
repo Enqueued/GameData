@@ -1,5 +1,6 @@
 package Entities;
 
+import Entities.Actors.Enemy;
 import Entities.Actors.GuildHead;
 import Entities.Actors.Player;
 import main_pack.Handler;
@@ -16,7 +17,7 @@ import java.util.Comparator;
 public class Emanager {
     private Handler hands;
     public Player player;
-    public GuildHead enemy;
+    public Enemy enemy;
     private ArrayList<Entity> entities;
     //this is setting up for the sort
     private Comparator<Entity> renderSort=new Comparator<Entity>() {
@@ -36,6 +37,7 @@ public class Emanager {
     public Emanager (Handler handler, Player player){
         this.hands=handler;
         this.player=player;
+        this.enemy = new Enemy(hands,8,8);
         entities=new ArrayList<Entity>();
         addEntity(player);
     }
@@ -77,7 +79,7 @@ public class Emanager {
     public Player getPlayer(){
         return player;
     }
-    public GuildHead getEnemy(){
+    public Enemy getEnemy(){
         return enemy;
     }
     /**

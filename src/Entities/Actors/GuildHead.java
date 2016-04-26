@@ -51,11 +51,7 @@ public class GuildHead extends Actor {
     @Override
     public void render(Graphics g) {
         g.drawImage(getCurrentAnime(),(int)(x-hands.getCam().getxOff()),(int)(y-hands.getCam().getyOff()), width, height, null);
-        if(getInput()/*&&(Entity.checkCollide(Emanager.getPlayer().getY(), Emanager.getPlayer().getX()))*/){
-            /*for(int i=0; i<400; i++){
-                tile = new Tile(Assets.tree,2);
-                tile.render(g, i, 300);
-            }*/
+        if(getInput()){
             g.setColor(Color.black);
             g.fillRect(0, 300, 400, 100);
 

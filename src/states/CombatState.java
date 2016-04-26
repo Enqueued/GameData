@@ -1,9 +1,11 @@
 package states;
 
 import Entities.Actors.Actor;
+import Entities.Actors.Enemy;
 import Entities.Actors.GuildHead;
 import Entities.Actors.Player;
 import combat_usage.rng;
+import graphic_launch.Anime;
 import graphic_launch.Assets;
 import main_pack.Display;
 import main_pack.Game;
@@ -23,10 +25,12 @@ import java.util.concurrent.TimeUnit;
  * Created by Parzival on 4/20/16.
  */
 public class CombatState extends State{ //implements ActionListener{
-    private JButton butt;
     public Player player;
-    public Player enemy;
-
+    public Enemy enemy;
+    public Anime badime = new Anime(200, Assets.enemy_down);
+    public int i=0;
+    public int maxCombo=0;
+    private int flag=0;
     /**
      * This is the constructor for the main menu
      * @param hands
@@ -34,14 +38,15 @@ public class CombatState extends State{ //implements ActionListener{
     public CombatState(Handler hands) {
         super(hands);
         player = hands.getWorld().getEntityManager().getPlayer();
-        enemy = hands.getWorld().getEntityManager().getPlayer();
+        enemy = hands.getWorld().getEntityManager().getEnemy();
         //enemy.setHealth(40);
     }
 
     @Override
     public void tick() {
         //System.out.println(hands.getMouseManager().getMouseX()+"\t"+hands.getMouseManager().getMouseY())
-        if(hands.getMouseManager().isLeftPressed()/*&&hands.getMouseManager().isRightPressed()*/){
+        if(hands.getMouseManager().isLeftPressed() && flag==1){
+            flag=0;
             StateManager.setState(hands.getGame().gState);
         }
 
@@ -58,14 +63,18 @@ public class CombatState extends State{ //implements ActionListener{
         g.setColor(Color.BLACK);
         g.fillRect(0,0,500,500);
         g.setColor(Color.red);
-        g.drawImage(Assets.guildhead_down[0],200,200,100,100,null);
-        g.drawString("fighting happens here", 105, 150);
+        badime.tick();
+        g.drawImage(badime.getCurrentFrame(),145,150,100,100,null);
+        g.drawString("fighting happens here", 130, 50);
         g.setColor(Color.blue);
         g.fillRect(hands.getMouseManager().getMouseX(), hands.getMouseManager().getMouseY(),10,10);
-        g.setColor(Color.green);
-        if(enemy.getHealth() <= 0){
-            g.drawString("you killed him! click to continue", 105, 350);
 
+        if(enemy.getHealth()<=0){
+            g.setColor(Color.yellow);
+            g.drawString("MAX COMBO: "+maxCombo, 250,125);
+            g.setColor(Color.green);
+            g.drawString("You killed him! Click to continue...", 105, 350);
+            flag=1;
         }
 
         if(enemy.getHealth() > 0){
@@ -77,10 +86,14 @@ public class CombatState extends State{ //implements ActionListener{
         //hands.getGame().init();
 
     }
-    public void combatCheck(Graphics g, Player player, Player enemy ){
+    public void combatCheck(Graphics g, Player player, Enemy enemy ){
         g.setColor(Color.white);
+        int dmg = player.getdamage();
+        int health = enemy.getHealth();
+        g.drawString("Enemy Health: "+health, 138,145);
         if(player.get_hit() < 15){
-            g.drawString("missed", 105, 275);
+            g.drawString("missed", 150, 275);
+            i=0;
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException e) {
@@ -88,13 +101,16 @@ public class CombatState extends State{ //implements ActionListener{
             }
         }
         else {
-            g.drawString("hit", 105, 300);
+            i++;
+            g.drawString("hit x"+i+ " for "+(dmg*i), 155, 300);
+            if (i>maxCombo)
+                maxCombo=i;
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            enemy.setHealth(enemy.getHealth() - player.getdamage());
+            enemy.setHealth(enemy.getHealth() - dmg);
         }
     }
     public void actionPerformed(ActionEvent e) {
